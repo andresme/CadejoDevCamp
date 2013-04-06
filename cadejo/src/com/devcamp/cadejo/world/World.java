@@ -1,5 +1,6 @@
 package com.devcamp.cadejo.world;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
@@ -72,7 +73,16 @@ public class World {
 			i.update(delta);
 		}
 	}
+<<<<<<< HEAD
 
+=======
+	
+	public void updateScore()
+	{
+		
+	}
+	
+>>>>>>> Se agrego el score en pantalla
 	public void checkGone(){
 		for(Background i : backgrounds){
 			if(i.getPosition().x < -Background.SIZE_W){
