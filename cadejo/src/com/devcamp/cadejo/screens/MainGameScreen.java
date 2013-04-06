@@ -67,7 +67,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 	public void show() {
 		world = new World(this);
 		scoreManager = new ScoreManager();
-		renderer = new WorldRenderer(world, true, scoreManager);
+		renderer = new WorldRenderer(world, scoreManager);
 		controller = new CharacterController(world);
 		scoreManager.startGame();
 		Gdx.input.setInputProcessor(this);

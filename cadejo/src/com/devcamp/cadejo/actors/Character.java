@@ -11,8 +11,8 @@ public class Character {
 	
 	static final float SPEED = 4f;
 	static final float JUMP_VEL = 4f;
-	public static final float SIZE_W = 5f;
-	public static final float SIZE_H = 8f;
+	public static final float SIZE_W = 3.125f;
+	public static final float SIZE_H = 7f;
 	
 	static Vector2 tmp = new Vector2();
 	

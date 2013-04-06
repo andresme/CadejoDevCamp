@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Obstacle {
 	
-	static final float SPEED = -3.5f;
+	static final float SPEED = -7.5f;
 	public float size_w;
 	public float size_h;
 	static Vector2 tmp;
@@ -21,12 +21,12 @@ public class Obstacle {
 		this.position = position;
 		switch(id){
 		case 1:
-			size_h = 0.5f;
-			size_w = 0.5f;
+			size_h = 1.25f;
+			size_w = 5f;
 			break;
 		case 2:
-			size_h = 0.75f;
-			size_w = 0.5f;
+			size_h = 3.03f;
+			size_w = 3.75f;
 			break;
 		case 3:
 			size_h = 0.3f;

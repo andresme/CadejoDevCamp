@@ -20,7 +20,6 @@ import com.devcamp.cadejo.actors.Background;
 import com.devcamp.cadejo.actors.Cadejo;
 import com.devcamp.cadejo.actors.Character;
 import com.devcamp.cadejo.actors.Character.State;
-import com.devcamp.cadejo.actors.Floor;
 import com.devcamp.cadejo.actors.Obstacle;
 
 public class WorldRenderer {
@@ -90,7 +89,12 @@ public class WorldRenderer {
 
 
 		backgroundTextures = new Array<Texture>();
-		backgroundTextures.add(new Texture(Gdx.files.internal("data/Background_1.png")));
+		backgroundTextures.add(new Texture(Gdx.files.internal("images/Background_1.png")));
+		
+		obstacleTextures = new Array<Texture>();
+		obstacleTextures.add(new Texture(Gdx.files.internal("images/alcantarilla.png")));
+		obstacleTextures.add(new Texture(Gdx.files.internal("images/basurero.png")));
+		
 
 		/** Crea la animacion de correr*/
 		TextureAtlas atlas = new TextureAtlas("images/textures/correr.txt");
@@ -124,6 +128,7 @@ public class WorldRenderer {
 		//Dibuja todo lo necesario
 		drawBackground();
 		drawCharacter();
+		drawObstacles();
 		drawScore();
 
 		//Cierra el sprite batch
@@ -148,7 +153,7 @@ public class WorldRenderer {
 		}else if(mainCharacter.getState().equals(State.JUMPING)) {
 			mCharacterFrame = mCharacterJump;// mJumpAnimation.getKeyFrame(mainCharacter.getStateTime(), true);
 		}
-		spriteBatch.draw(mCharacterFrame, mainCharacter.getPosition().x * ppuX, mainCharacter.getPosition().y * ppuY, mainCharacter.SIZE_W * ppuX, mainCharacter.SIZE_H * ppuY);
+		spriteBatch.draw(mCharacterFrame, mainCharacter.getPosition().x * ppuX, mainCharacter.getPosition().y * ppuY, Character.SIZE_W * ppuX, Character.SIZE_H * ppuY);
 	}
 
 	public void drawCadejo(){
@@ -158,10 +163,8 @@ public class WorldRenderer {
 	public void drawObstacles(){
 		Array<Obstacle> obstacles = world.getObstacles();
 		for(Obstacle i : obstacles){
-			switch(i.getId()){
-			case 1:
-
-			}
+			spriteBatch.draw(obstacleTextures.get(i.getId()-1), i.getPosition().x * ppuX, i.getPosition().y * ppuY,
+					i.size_w * ppuX, i.size_h * ppuY);
 		}
 	}
 
@@ -173,15 +176,6 @@ public class WorldRenderer {
 		}
 	}
 
-	public void drawFloor(){
-		Array<Floor> floors = world.getFloor();
-		for(Floor i : floors){
-			switch(i.getId()){
-			case 1:
-
-			}
-		}
-	}
 
 	public void drawDebug(){
 		debugRenderer.setProjectionMatrix(cam.combined);
@@ -210,14 +204,7 @@ public class WorldRenderer {
 			debugRenderer.rect(x2, y2, rect2.width, rect2.height);
 		}
 
-		Array<Floor> floor = world.getFloor();
-		for(Floor i : floor){
-			Rectangle rect2 = i.getBounds();
-			float x2 = i.getPosition().x + rect2.x;
-			float y2 = i.getPosition().y + rect2.y;
-			debugRenderer.setColor(new Color(1,0,0,1));
-			debugRenderer.rect(x2, y2, rect2.width, rect2.height);
-		}
+
 
 		Array<Obstacle> obstacles = world.getObstacles();
 		for(Obstacle i : obstacles){
