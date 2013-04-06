@@ -15,6 +15,7 @@ public class MainActivity extends AndroidApplication implements DialogInterface,
 
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
 		cfg.useGL20 = true;
+		cfg.useWakelock = true;
 
 		initialize(new MyGame(this), cfg);
 	}

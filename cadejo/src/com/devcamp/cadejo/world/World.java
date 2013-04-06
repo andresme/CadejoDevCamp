@@ -98,7 +98,7 @@ public class World {
 			}
 		}
 		for(Obstacle i : obstacles){
-			if(i.getPosition().x < -Obstacle.SIZE_W){
+			if(i.getPosition().x < -i.size_w){
 				goneObstacles.add(i);
 			}
 		}
@@ -188,10 +188,12 @@ public class World {
 	public void checkObstacleCreation(float dificulty){
 		Obstacle newObstacle = null;
 		boolean enable = false;
-		int randomObstacle = 1 + ((int)Math.random() * 1);
+		int randomObstacle = 1 + ((int)Math.random() * 5);
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
-				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*4.5){
+				if(obstacles.get(obstacles.size-1).getPosition().x < 
+						WorldRenderer.CAMERA_W - (obstacles.get(obstacles.size-1).size_w+
+								mainCharacter.getBounds().width*1.75)){
 					enable = true;
 				}
 				else{
