@@ -1,7 +1,6 @@
 package com.devcamp.cadejo.utils;
 
 import android.content.Context;
-import android.content.SyncResult;
 import android.media.MediaPlayer;
 
 

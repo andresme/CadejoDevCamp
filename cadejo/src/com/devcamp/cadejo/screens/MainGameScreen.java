@@ -22,7 +22,6 @@ public class MainGameScreen implements Screen, InputProcessor{
 	private CharacterController controller;
 	private ScoreManager scoreManager;
 	public GameState state = GameState.RUNNING;
-	private float dificulty = 0.03f;
 
 	private MyGame g;
 
@@ -39,24 +38,18 @@ public class MainGameScreen implements Screen, InputProcessor{
 				dificultySpeed *= 2;
 			}
 			if(score%550 == 0 && score != 0){
-				dificulty += 0.2*(float) Math.random();
 				dificultySpeed += 0.0040;
 			}
 			if(score%750 == 0 && score != 0){
-				dificulty += 0.4*(float) Math.random();
 				dificultySpeed += 0.0045;
 			}
 			if(score%1150 == 0 && score != 0){
-				dificulty += (float) Math.random();
 				dificultySpeed += 0.0055;
-			}
-			if(score%100 == 0 && score != 0){
-				dificulty = (float) Math.random();
 			}
 			if(dificultySpeed > 3) dificultySpeed = 3f;
 			Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 			Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-			world.update(delta, dificulty);
+			world.update(delta);
 			controller.update(delta);
 			renderer.render();
 		}
@@ -80,7 +73,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 		dificultySpeed = 1;
 		world = new World(this);
 		scoreManager = new ScoreManager();
-		renderer = new WorldRenderer(world, true, scoreManager);
+		renderer = new WorldRenderer(world, scoreManager);
 		controller = new CharacterController(world);
 		scoreManager.startGame();
 		Gdx.input.setInputProcessor(this);
