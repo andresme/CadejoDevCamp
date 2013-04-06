@@ -61,6 +61,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 			renderer.render();
 		}
 		else if(state.equals(GameState.STOPPED)){
+			dificultySpeed = 1;
 			controller.touchUp();
 			scoreManager.stopGame();
 			g.showScore(scoreManager.getScore());

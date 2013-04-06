@@ -122,7 +122,7 @@ public class World {
 	public void checkBackgroundCreation(){
 		Background newBackground = null;
 		int randomBackground =  1 + (int)(Math.random() * 1); //5);
-		if(backgrounds.get(backgrounds.size-1).getPosition().x <= (WorldRenderer.CAMERA_W - Background.SIZE_W)+(Background.SIZE_W*0.0075)){
+		if(backgrounds.get(backgrounds.size-1).getPosition().x <= (WorldRenderer.CAMERA_W - Background.SIZE_W)+(Background.SIZE_W*0.015)){
 			for(int i = 0; i < cachedBackgrounds.size-1; i++){
 				if(cachedBackgrounds.get(i).getId() == randomBackground){
 					newBackground = cachedBackgrounds.get(i);
