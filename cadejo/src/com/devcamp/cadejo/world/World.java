@@ -1,5 +1,6 @@
 package com.devcamp.cadejo.world;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
@@ -150,7 +151,7 @@ public class World {
 
 	public void checkBackgroundCreation(){
 		Background newBackground = null;
-		int randomBackground =  1 + ((int)Math.random() * 1); // should be random
+		int randomBackground =  1 + (int)(Math.random() * 1); //5);
 		if(backgrounds.get(backgrounds.size-1).getPosition().x <= WorldRenderer.CAMERA_W - Background.SIZE_W){
 			for(int i = 0; i < cachedBackgrounds.size-1; i++){
 				if(cachedBackgrounds.get(i).getId() == randomBackground){
@@ -188,7 +189,8 @@ public class World {
 	public void checkObstacleCreation(float dificulty){
 		Obstacle newObstacle = null;
 		boolean enable = false;
-		int randomObstacle = 1 + ((int)Math.random() * 5);
+		int randomObstacle = 1 + (int)(Math.random() * 5);
+		Gdx.app.log("random", randomObstacle+"");
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
 				if(obstacles.get(obstacles.size-1).getPosition().x < 
