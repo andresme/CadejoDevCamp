@@ -1,5 +1,6 @@
 package com.devcamp.cadejo;
 
+import com.devcamp.cadejo.utils.ManagerSonidos;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +14,32 @@ public class MenuActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        ManagerSonidos.getInstance().iniciarReproductorFondo(this, R.raw.fondo_menu);
         setContentView(R.layout.menu);
         setButtonEvents();
     }
+	
+	@Override
+	public void onResume()
+	{
+		super.onPause();
+		ManagerSonidos.getInstance().reanudarReproductorFondos();
+	}
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		ManagerSonidos.getInstance().pausarReproductorFondos();
+	}
+	
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+		ManagerSonidos.getInstance().terminarReprodutorFondo();
+		ManagerSonidos.getInstance().onDestroy();
+	}
 	
 	private void setButtonEvents()
 	{

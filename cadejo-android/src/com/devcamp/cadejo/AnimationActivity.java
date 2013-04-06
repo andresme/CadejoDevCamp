@@ -1,5 +1,7 @@
 package com.devcamp.cadejo;
 
+import com.devcamp.cadejo.utils.ManagerSonidos;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +26,20 @@ public class AnimationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.animation);
 		setButtonEvents();
+	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onPause();
+		ManagerSonidos.getInstance().reanudarReproductorFondos();
+	}
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		ManagerSonidos.getInstance().pausarReproductorFondos();
 	}
 
 	private void setButtonEvents()
