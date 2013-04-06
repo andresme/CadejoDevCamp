@@ -154,7 +154,7 @@ public class WorldRenderer {
 		debugRenderer.setColor(new Color(1,1,1,1));
 		debugRenderer.rect(x3, y3, rect3.width, rect3.height);
 
-		Array<Background> backgrounds = world.getBackgrounds();
+		/*Array<Background> backgrounds = world.getBackgrounds();
 		for(Background i : backgrounds){
 			Rectangle rect2 = i.getBounds();
 			float x2 = i.getPosition().x + rect2.x;
@@ -171,7 +171,7 @@ public class WorldRenderer {
 			debugRenderer.setColor(new Color(1,0,0,1));
 			debugRenderer.rect(x2, y2, rect2.width, rect2.height);
 		}
-
+*/
 		Array<Obstacle> obstacles = world.getObstacles();
 		for(Obstacle i : obstacles){
 			Rectangle rect2 = i.getBounds();
