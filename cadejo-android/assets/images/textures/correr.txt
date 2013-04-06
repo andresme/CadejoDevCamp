@@ -1,0 +1,60 @@
+correr.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+correr
+  rotate: false
+  xy: 2, 374
+  size: 223, 398
+  orig: 287, 460
+  offset: 31, 1
+  index: 2
+correr
+  rotate: false
+  xy: 253, 2
+  size: 211, 400
+  orig: 287, 460
+  offset: 39, 1
+  index: 5
+correr
+  rotate: false
+  xy: 466, 2
+  size: 223, 396
+  orig: 287, 460
+  offset: 30, 2
+  index: 8
+correr
+  rotate: false
+  xy: 2, 2
+  size: 249, 370
+  orig: 287, 460
+  offset: 5, 20
+  index: 3
+correr
+  rotate: false
+  xy: 478, 400
+  size: 221, 398
+  orig: 287, 460
+  offset: 32, 1
+  index: 6
+correr
+  rotate: false
+  xy: 227, 404
+  size: 249, 368
+  orig: 287, 460
+  offset: 5, 23
+  index: 7
+correr
+  rotate: false
+  xy: 691, 2
+  size: 215, 396
+  orig: 287, 460
+  offset: 38, 1
+  index: 1
+correr
+  rotate: false
+  xy: 701, 400
+  size: 221, 398
+  orig: 287, 460
+  offset: 31, 2
+  index: 4

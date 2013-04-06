@@ -4,8 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
@@ -14,6 +18,7 @@ import com.devcamp.cadejo.ScoreManager;
 import com.devcamp.cadejo.actors.Background;
 import com.devcamp.cadejo.actors.Cadejo;
 import com.devcamp.cadejo.actors.Character;
+import com.devcamp.cadejo.actors.Character.State;
 import com.devcamp.cadejo.actors.Floor;
 import com.devcamp.cadejo.actors.Obstacle;
 
@@ -21,6 +26,9 @@ public class WorldRenderer {
 
 	public static final float CAMERA_W = 10f;
 	public static final float CAMERA_H = 7f;
+
+	private static final float RUNNING_FRAME_DURATION = 0.1f;
+	public static final int CANT_IMGS_CORRER = 8;
 
 	private World world;
 	private OrthographicCamera cam;
@@ -45,6 +53,13 @@ public class WorldRenderer {
 	//Score
 	private ScoreManager mScoreManager;
 	private BitmapFont mScoreFont;
+
+	//Para la animacion
+	private Animation mRunAnimation;
+	private Animation mJumpAnimation;
+	private TextureRegion[] mRunFrames = new TextureRegion[8];
+	private TextureRegion mCharacterIdle;
+	private TextureRegion mCharacterFrame;
 
 	public WorldRenderer(World world, boolean debug, ScoreManager pScoreManager){
 		this.debug = debug;
@@ -71,22 +86,31 @@ public class WorldRenderer {
 		loadTextures();
 	}
 
-	public void loadTextures(){
-		backgroundTextures = new Array<Texture>();
-		backgroundTextures.add(new Texture(Gdx.files.internal("data/Background_1.png")));
+	public void loadTextures() {
+		TextureAtlas atlas = new TextureAtlas("images/textures/correr.txt");
+		mCharacterIdle = atlas.getRegions().first();
+		
+//		bobIdleRight.flip(true, false);
+
+		TextureRegion[] runFrames = new TextureRegion[CANT_IMGS_CORRER];
+		int index = 0;
+		for(AtlasRegion region : atlas.getRegions())
+			runFrames[index++] = region;
+		
+		mRunAnimation = new Animation(RUNNING_FRAME_DURATION, runFrames);	
 	}
 
 	public void render(){
-		
+		if(debug)
+			drawDebug();
 
 		//Abre el sprite batch
 		spriteBatch.begin();
-		
-		drawBackground();
 
 		//Dibuja todo lo necesario
+		drawCharacter();
 		drawScore();
-		
+
 		//Cierra el sprite batch
 		spriteBatch.end();
 		
@@ -100,8 +124,13 @@ public class WorldRenderer {
 	}
 
 	public void drawCharacter(){
-		Character mainCharacter = world.getMainCharacter();
 
+		Character mainCharacter = world.getMainCharacter();	
+		mCharacterFrame = mCharacterIdle;
+		if(mainCharacter.getState().equals(State.RUNNING)) {
+			mCharacterFrame = mRunAnimation.getKeyFrame(mainCharacter.getStateTime(), true);
+		}
+		spriteBatch.draw(mCharacterFrame, mainCharacter.getPosition().x * ppuX, mainCharacter.getPosition().y * ppuY, mainCharacter.SIZE * ppuX, mainCharacter.SIZE * ppuY);
 	}
 
 	public void drawCadejo(){
@@ -123,6 +152,10 @@ public class WorldRenderer {
 		for(Background i : backgrounds){
 			spriteBatch.draw(backgroundTextures.get(i.getId()-1), i.getPosition().x * ppuX, i.getPosition().y * ppuY,
 					Background.SIZE_W * ppuX, Background.SIZE_H * ppuY);
+			switch(i.getId()){
+			case 1:
+
+			}
 		}
 	}
 

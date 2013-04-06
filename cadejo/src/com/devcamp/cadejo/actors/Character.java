@@ -11,8 +11,10 @@ public class Character {
 	
 	static final float SPEED = 2f;
 	static final float JUMP_VEL = 1f;
-	static final float SIZE_W = 0.5f;
-	static final float SIZE_H = 0.5f;
+	static final float SIZE_W = 2f;
+	static final float SIZE_H = 2f;
+	
+	public static final float SIZE = 2f; // half a unit
 	static Vector2 tmp = new Vector2();
 	
 	Vector2 position = new Vector2();
@@ -20,6 +22,12 @@ public class Character {
 	Vector2 velocity = new Vector2();
 	Rectangle bounds = new Rectangle();
 	State state = State.RUNNING;
+	float stateTime = 0;
+	
+	public float getStateTime()
+	{
+		return stateTime;
+	}
 	
 	public Character(Vector2 position){
 		this.position = position;
@@ -27,7 +35,8 @@ public class Character {
 		this.bounds.width = SIZE_W;
 	}
 	
-	public void update(float delta){
+	public void update(float delta) {		
+		stateTime += delta;
 		Vector2 velTemp = velocity.cpy();
 		position.add(velTemp.scl(delta));
 	}
@@ -71,9 +80,5 @@ public class Character {
 	public void setState(State state) {
 		this.state = state;
 	}
-	
-	
-	
-	
 
 }
