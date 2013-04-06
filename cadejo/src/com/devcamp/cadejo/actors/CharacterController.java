@@ -13,11 +13,19 @@ public class CharacterController {
 		JUMP
 	}
 	
+<<<<<<< HEAD
 	private static final float GRAVITY = -7f;
 	private static final float MAX_JUMP_SPEED = 3f;
 	private static final float DAMP = 10f;
 	private static final float MAX_VEL = 5f;
 	private static final long LONG_JUMP = 150l;
+=======
+	private static final float GRAVITY = -25f;
+	private static final float MAX_JUMP_SPEED = 5f;
+	private static final float DAMP = 0.10f;
+	private static final float MAX_VEL = 50f;
+	private static final long LONG_JUMP = 250l;
+>>>>>>> Agrega brinco
 	
 	private World world;
 	private Character mainCharacter;
@@ -38,6 +46,7 @@ public class CharacterController {
 	public void touchDown(){
 		keys.get(keys.put(TouchEvents.JUMP, true));
 		jumpingPressed = true;
+		mainCharacter.resetStateTime();
 	}
 	
 	public void touchUp(){

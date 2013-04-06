@@ -1,0 +1,130 @@
+saltar.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+saltar
+  rotate: false
+  xy: 762, 2
+  size: 223, 380
+  orig: 287, 460
+  offset: 36, 0
+  index: 2
+saltar
+  rotate: false
+  xy: 316, 2
+  size: 171, 408
+  orig: 287, 460
+  offset: 69, 26
+  index: 11
+saltar
+  rotate: false
+  xy: 2, 420
+  size: 155, 414
+  orig: 287, 460
+  offset: 56, 1
+  index: 15
+saltar
+  rotate: false
+  xy: 159, 2
+  size: 155, 414
+  orig: 287, 460
+  offset: 98, 1
+  index: 9
+saltar
+  rotate: false
+  xy: 332, 412
+  size: 223, 400
+  orig: 287, 460
+  offset: 36, 0
+  index: 1
+saltar
+  rotate: false
+  xy: 730, 384
+  size: 199, 380
+  orig: 287, 460
+  offset: 60, 0
+  index: 5
+saltar
+  rotate: false
+  xy: 416, 814
+  size: 171, 332
+  orig: 287, 460
+  offset: 98, 1
+  index: 18
+saltar
+  rotate: false
+  xy: 2, 2
+  size: 155, 416
+  orig: 287, 460
+  offset: 98, 1
+  index: 10
+saltar
+  rotate: false
+  xy: 2, 420
+  size: 155, 414
+  orig: 287, 460
+  offset: 56, 1
+  index: 14
+saltar
+  rotate: false
+  xy: 193, 830
+  size: 221, 334
+  orig: 287, 460
+  offset: 38, 1
+  index: 8
+saltar
+  rotate: false
+  xy: 730, 384
+  size: 199, 380
+  orig: 287, 460
+  offset: 60, 0
+  index: 4
+saltar
+  rotate: false
+  xy: 557, 394
+  size: 171, 384
+  orig: 287, 460
+  offset: 98, 1
+  index: 17
+saltar
+  rotate: false
+  xy: 489, 2
+  size: 237, 390
+  orig: 287, 460
+  offset: 1, 70
+  index: 13
+saltar
+  rotate: false
+  xy: 2, 836
+  size: 189, 332
+  orig: 287, 460
+  offset: 98, 1
+  index: 7
+saltar
+  rotate: false
+  xy: 762, 2
+  size: 223, 380
+  orig: 287, 460
+  offset: 36, 0
+  index: 3
+saltar
+  rotate: false
+  xy: 589, 780
+  size: 171, 384
+  orig: 287, 460
+  offset: 98, 1
+  index: 16
+saltar
+  rotate: false
+  xy: 159, 418
+  size: 171, 410
+  orig: 287, 460
+  offset: 69, 26
+  index: 12
+saltar
+  rotate: false
+  xy: 762, 766
+  size: 171, 380
+  orig: 287, 460
+  offset: 98, 1
+  index: 6

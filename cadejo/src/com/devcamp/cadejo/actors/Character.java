@@ -9,12 +9,11 @@ public class Character {
 		RUNNING, JUMPING, COLLISION, FALL
 	}
 	
-	static final float SPEED = 2f;
-	static final float JUMP_VEL = 1f;
-	static final float SIZE_W = 2f;
-	static final float SIZE_H = 2f;
+	static final float SPEED = 4f;
+	static final float JUMP_VEL = 4f;
+	public static final float SIZE_W = 2f;
+	public static final float SIZE_H = 3f;
 	
-	public static final float SIZE = 2f; // half a unit
 	static Vector2 tmp = new Vector2();
 	
 	Vector2 position = new Vector2();
@@ -27,6 +26,11 @@ public class Character {
 	public float getStateTime()
 	{
 		return stateTime;
+	}
+	
+	public void resetStateTime()
+	{
+		stateTime = 0;
 	}
 	
 	public Character(Vector2 position){

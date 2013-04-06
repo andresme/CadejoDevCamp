@@ -29,6 +29,7 @@ public class WorldRenderer {
 
 	private static final float RUNNING_FRAME_DURATION = 0.1f;
 	public static final int CANT_IMGS_CORRER = 8;
+	public static final int CANT_IMGS_SALTAR = 18;
 
 	private World world;
 	private OrthographicCamera cam;
@@ -59,6 +60,7 @@ public class WorldRenderer {
 	private Animation mJumpAnimation;
 	private TextureRegion[] mRunFrames = new TextureRegion[8];
 	private TextureRegion mCharacterIdle;
+	private TextureRegion mCharacterJump;
 	private TextureRegion mCharacterFrame;
 
 	public WorldRenderer(World world, boolean debug, ScoreManager pScoreManager){
@@ -87,13 +89,14 @@ public class WorldRenderer {
 	}
 
 	public void loadTextures() {
+		
+		
 		backgroundTextures = new Array<Texture>();
 		backgroundTextures.add(new Texture(Gdx.files.internal("data/Background_1.png")));
 		
+		/** Crea la animacion de correr*/
 		TextureAtlas atlas = new TextureAtlas("images/textures/correr.txt");
 		mCharacterIdle = atlas.getRegions().first();
-		
-//		bobIdleRight.flip(true, false);
 
 		TextureRegion[] runFrames = new TextureRegion[CANT_IMGS_CORRER];
 		int index = 0;
@@ -101,6 +104,16 @@ public class WorldRenderer {
 			runFrames[index++] = region;
 		
 		mRunAnimation = new Animation(RUNNING_FRAME_DURATION, runFrames);	
+		
+		/** Crea la animacion de saltar*/
+		TextureAtlas atlasBrinco = new TextureAtlas("images/textures/saltar.txt");
+		TextureRegion[] jumpFrames = new TextureRegion[CANT_IMGS_SALTAR];
+		mCharacterJump = atlasBrinco.getRegions().get(12);
+		index = 0;
+		for(AtlasRegion region : atlasBrinco.getRegions())
+			jumpFrames[index++] = region;
+		
+		mJumpAnimation = new Animation(RUNNING_FRAME_DURATION, jumpFrames);
 	}
 
 	public void render(){
@@ -134,8 +147,10 @@ public class WorldRenderer {
 		mCharacterFrame = mCharacterIdle;
 		if(mainCharacter.getState().equals(State.RUNNING)) {
 			mCharacterFrame = mRunAnimation.getKeyFrame(mainCharacter.getStateTime(), true);
+		}else if(mainCharacter.getState().equals(State.JUMPING)) {
+			mCharacterFrame = mCharacterJump;// mJumpAnimation.getKeyFrame(mainCharacter.getStateTime(), true);
 		}
-		spriteBatch.draw(mCharacterFrame, mainCharacter.getPosition().x * ppuX, mainCharacter.getPosition().y * ppuY, mainCharacter.SIZE * ppuX, mainCharacter.SIZE * ppuY);
+		spriteBatch.draw(mCharacterFrame, mainCharacter.getPosition().x * ppuX, mainCharacter.getPosition().y * ppuY, mainCharacter.SIZE_W * ppuX, mainCharacter.SIZE_H * ppuY);
 	}
 
 	public void drawCadejo(){
