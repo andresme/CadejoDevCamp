@@ -87,6 +87,9 @@ public class WorldRenderer {
 	}
 
 	public void loadTextures() {
+		backgroundTextures = new Array<Texture>();
+		backgroundTextures.add(new Texture(Gdx.files.internal("data/Background_1.png")));
+		
 		TextureAtlas atlas = new TextureAtlas("images/textures/correr.txt");
 		mCharacterIdle = atlas.getRegions().first();
 		
