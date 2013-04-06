@@ -1,10 +1,9 @@
 package com.devcamp.cadejo;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.devcamp.cadejo.screens.MainGameScreen;
 
-public class MyGame extends Game implements ScoreListener{
+public class MyGame extends Game{
 
 	/**
 	 * Para mostrar la ventana de score se llama a 
@@ -14,17 +13,16 @@ public class MyGame extends Game implements ScoreListener{
 	
 	public MyGame(DialogInterface pDialogInterface)
 	{
-		mDialogInterface = pDialogInterface;
+		mDialogInterface = pDialogInterface;		
 	}
 	
 	@Override
 	public void create() {
-		this.setScreen(new MainGameScreen());
+		this.setScreen(new MainGameScreen(this));
 	}
-
-	@Override
-	public void onScoreChanged(int pScore) {
-		Gdx.app.log("SCORE", String.valueOf(pScore));
+	
+	public void showScore(String score){
+		mDialogInterface.showScore(score);
 	}
 	
 }

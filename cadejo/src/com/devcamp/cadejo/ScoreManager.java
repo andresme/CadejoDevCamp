@@ -3,8 +3,7 @@ package com.devcamp.cadejo;
 import com.badlogic.gdx.Gdx;
 
 public class ScoreManager {
-
-	private ScoreListener mListener;
+	
 	private boolean mPlaying;
 	private Thread mScoreThread;
 	private int mActualScore;
@@ -13,16 +12,10 @@ public class ScoreManager {
 
 	public ScoreManager()
 	{
-		mListener = null;
 		mPlaying = false;
 		mActualScore = 0;
 		mScoreIncrement = 50;
 		mDelayBetweenIncrements = 500;
-	}
-
-	public void setScoreListener(ScoreListener pListener)
-	{
-		mListener = pListener;
 	}
 
 	public void startGame()
@@ -43,26 +36,22 @@ public class ScoreManager {
 		mScoreThread = new Thread(new Runnable() {
 			@Override
 			public void run() 
-			{			      
-				Gdx.app.postRunnable(new Runnable() {
-					@Override
-					public void run() {
-
-						while(mPlaying)
-						{
-							mActualScore += mScoreIncrement;
-							if(mListener != null)
-								mListener.onScoreChanged(mActualScore);
-							try {
-								Thread.sleep(mDelayBetweenIncrements);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
+			{			
+				while(mPlaying)
+				{
+					mActualScore += mScoreIncrement;
+					try {
+						Thread.sleep(mDelayBetweenIncrements);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
-				});
+				}
 			}
 		});
 		mScoreThread.start();
+	}
+
+	public String getScore() {
+		return String.valueOf(mActualScore);
 	}
 }

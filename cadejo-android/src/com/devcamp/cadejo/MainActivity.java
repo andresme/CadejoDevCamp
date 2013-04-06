@@ -20,7 +20,7 @@ public class MainActivity extends AndroidApplication implements DialogInterface,
     }
 
 	@Override
-	public void showScore(int pScore) {
+	public void showScore(String pScore) {
 		Intent intent = new Intent(this, ScoreActivity.class);
 		intent.putExtra(KEY_SCORE, pScore);
 		startActivity(intent);

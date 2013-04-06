@@ -3,11 +3,13 @@ package com.devcamp.cadejo.world;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+import com.devcamp.cadejo.ScoreManager;
 import com.devcamp.cadejo.actors.Background;
 import com.devcamp.cadejo.actors.Cadejo;
 import com.devcamp.cadejo.actors.Character;
@@ -39,21 +41,32 @@ public class WorldRenderer {
 	private float ppuX;
 	private float ppuY;
 	
-	public WorldRenderer(World world, boolean debug){
+	//Score
+	private ScoreManager mScoreManager;
+	private BitmapFont mScoreFont;
+	
+	public WorldRenderer(World world, boolean debug, ScoreManager pScoreManager){
 		this.debug = debug;
-		sharedConstructor(world);
+		sharedConstructor(world, pScoreManager);
 	}
 	
-	public WorldRenderer(World world){
-		sharedConstructor(world);
+	public WorldRenderer(World world, ScoreManager pScoreManager){
+		sharedConstructor(world, pScoreManager);
 	}
 	
-	public void sharedConstructor(World world){
+	public void sharedConstructor(World world, ScoreManager pScoreManager){
 		this.world = world;
 		this.cam = new OrthographicCamera(CAMERA_W, CAMERA_H);
 		this.cam.position.set(CAMERA_W/2f, CAMERA_H/2f, 0f);
 		this.cam.update();
 		spriteBatch = new SpriteBatch();
+		
+		//Score
+		mScoreManager = pScoreManager;
+		mScoreFont = new BitmapFont();
+		mScoreFont.setColor(0.5f,0.4f,0,1);
+		
+		//
 		loadTextures();
 	}
 	
@@ -64,6 +77,20 @@ public class WorldRenderer {
 	public void render(){
 		if(debug)
 			drawDebug();
+		
+		//Abre el sprite batch
+		spriteBatch.begin();
+		
+		//Dibuja todo lo necesario
+		drawScore();
+		
+		//Cierra el sprite batch
+		spriteBatch.end();
+	}
+	
+	private void drawScore()
+	{
+		mScoreFont.draw(spriteBatch, "Score: " + mScoreManager.getScore() , 100, 100);
 	}
 	
 	public void drawCharacter(){

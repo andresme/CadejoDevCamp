@@ -17,7 +17,7 @@ public class ScoreActivity extends Activity implements IConstants{
 	
 	public void showScore()
 	{
-		int score = getIntent().getIntExtra(KEY_SCORE, 0);
+		String score = getIntent().getStringExtra(KEY_SCORE);
 		((TextView)findViewById(R.id.texto_score)).setText(String.valueOf(score));
 	}
 	

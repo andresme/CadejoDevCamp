@@ -6,9 +6,9 @@ import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
 import com.devcamp.cadejo.actors.Cadejo;
 import com.devcamp.cadejo.actors.Character;
+import com.devcamp.cadejo.actors.Character.State;
 import com.devcamp.cadejo.actors.Floor;
 import com.devcamp.cadejo.actors.Obstacle;
-import com.devcamp.cadejo.actors.Character.State;
 
 public class World {
 
@@ -86,7 +86,7 @@ public class World {
 			i.update(delta);
 		}
 	}
-
+	
 	public void checkGone(){
 		for(Background i : backgrounds){
 			if(i.getPosition().x < -Background.SIZE_W){

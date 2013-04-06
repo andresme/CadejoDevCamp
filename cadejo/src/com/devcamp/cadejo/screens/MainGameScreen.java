@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.devcamp.cadejo.MyGame;
+import com.devcamp.cadejo.ScoreManager;
 import com.devcamp.cadejo.actors.Character.State;
 import com.devcamp.cadejo.actors.CharacterController;
 import com.devcamp.cadejo.world.World;
@@ -15,15 +16,15 @@ public class MainGameScreen implements Screen, InputProcessor{
 	private World world;
 	private WorldRenderer renderer;
 	private CharacterController controller;
+	private ScoreManager scoreManager;
 	
 	private int width, height;
 	
 	private MyGame g;
 
-	
-	/*public MainGameScreen(MyGame g) {
+	public MainGameScreen(MyGame g){
 		this.g = g;
-	}*/
+	}
 
 	@Override
 	public void render(float delta) {
@@ -35,8 +36,8 @@ public class MainGameScreen implements Screen, InputProcessor{
 			renderer.render();
 		}
 		else{
-			//g.showScore();
-			
+			scoreManager.stopGame();
+			g.showScore(scoreManager.getScore());
 		}
 		
 	}
@@ -52,10 +53,11 @@ public class MainGameScreen implements Screen, InputProcessor{
 	@Override
 	public void show() {
 		world = new World();
-		renderer = new WorldRenderer(world, true);
+		scoreManager = new ScoreManager();
+		renderer = new WorldRenderer(world, true, scoreManager);
 		controller = new CharacterController(world);
+		scoreManager.startGame();
 		Gdx.input.setInputProcessor(this);
-		
 	}
 
 	@Override
