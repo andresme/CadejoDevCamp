@@ -13,7 +13,7 @@ import com.devcamp.cadejo.world.WorldRenderer;
 
 public class MainGameScreen implements Screen, InputProcessor{
 	public enum GameState{
-		RUNNING, STOPPED
+		RUNNING, STOPPED, PAUSED
 	}
 
 	private World world;
@@ -31,8 +31,9 @@ public class MainGameScreen implements Screen, InputProcessor{
 
 	@Override
 	public void render(float delta) {
-		if(!world.getMainCharacter().getState().equals(State.COLLISION) && state.equals(GameState.RUNNING)){
-			
+		if(!world.getMainCharacter().getState().equals(State.COLLISION) && state.equals(GameState.RUNNING)
+				&& !state.equals(GameState.PAUSED)){
+
 			int score = Integer.parseInt(scoreManager.getScore());
 			if(score < 1500 && score > 1000) dificulty += 0.03;
 			else if(score < 1750 && score > 1500) dificulty += 0.04;
@@ -67,7 +68,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 	public void show() {
 		world = new World(this);
 		scoreManager = new ScoreManager();
-		renderer = new WorldRenderer(world, true, scoreManager);
+		renderer = new WorldRenderer(world, scoreManager);
 		controller = new CharacterController(world);
 		scoreManager.startGame();
 		Gdx.input.setInputProcessor(this);
@@ -75,19 +76,19 @@ public class MainGameScreen implements Screen, InputProcessor{
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
+		state = GameState.PAUSED;
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
+		state = GameState.PAUSED;
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
+		state = GameState.RUNNING;
 
 	}
 
