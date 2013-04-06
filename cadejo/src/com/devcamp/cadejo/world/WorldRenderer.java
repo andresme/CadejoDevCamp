@@ -83,7 +83,6 @@ public class WorldRenderer {
 		mScoreFont.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		mScoreFont.setColor(1f, 1f, 1f,1);
 
-		//
 		loadTextures();
 	}
 
