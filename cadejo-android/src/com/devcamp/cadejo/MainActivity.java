@@ -30,13 +30,12 @@ public class MainActivity extends AndroidApplication implements DialogInterface,
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (requestCode == REQUEST_ACTIVITY_SCORE) {
-
 			if(resultCode == RESULT_JUGAR_DE_NUEVO)
 			{
 				Intent intent = new Intent(this, MainActivity.class);
 				startActivity(intent);
-				finish();
 			}
+			finish();
 		}
 	}
 }
