@@ -20,5 +20,4 @@ public class ScoreActivity extends Activity implements IConstants{
 		String score = getIntent().getStringExtra(KEY_SCORE);
 		((TextView)findViewById(R.id.texto_score)).setText(String.valueOf(score));
 	}
-	
 }
