@@ -13,13 +13,9 @@ import android.widget.RelativeLayout;
 
 public class AnimationActivity extends Activity {
 
-	private final int CANT_IMAGENES_ANIM = 5;
+	private final int CANT_IMAGENES_ANIM = 1;
 	private int mPosActualAnim = 0;
-	private int[] mImagenesAnim = {R.drawable.anim1,
-			R.drawable.anim2,
-			R.drawable.anim3,
-			R.drawable.anim4,
-			R.drawable.anim5 };
+	private int[] mImagenesAnim = {R.drawable.anim1};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
