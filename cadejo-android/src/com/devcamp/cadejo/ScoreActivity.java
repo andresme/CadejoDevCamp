@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.devcamp.cadejo.utils.IConstants;
@@ -28,13 +28,19 @@ public class ScoreActivity extends Activity implements IConstants{
 	
 	private void setButtonEvents()
 	{
-//		((Button)findViewById(R.id.btn_jugar_de_nuevo)).setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				setResult(RESULT_JUGAR_DE_NUEVO);
-//				finish();
-//			}
-//		});
+		((ImageView)findViewById(R.id.btn_menu_score)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+		
+		((ImageView)findViewById(R.id.btn_jugar_de_nuevo_menu)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				setResult(RESULT_JUGAR_DE_NUEVO);
+				finish();
+			}
+		});
 	}
 }

@@ -64,11 +64,26 @@
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/menu_btn_selector" />
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/btn_menu_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:src="@drawable/menu_btn_selector" />
+
+            <ImageView
+                android:id="@+id/btn_jugar_de_nuevo_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:src="@drawable/menu_btn_selector" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
