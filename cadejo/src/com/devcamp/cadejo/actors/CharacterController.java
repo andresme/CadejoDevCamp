@@ -13,10 +13,10 @@ public class CharacterController {
 		JUMP
 	}
 	
-	private static final float GRAVITY = -25f;
-	private static final float MAX_JUMP_SPEED = 5f;
-	private static final float DAMP = 0.10f;
-	private static final float MAX_VEL = 50f;
+	private static final float GRAVITY = -7f;
+	private static final float MAX_JUMP_SPEED = 3f;
+	private static final float DAMP = 10f;
+	private static final float MAX_VEL = 5f;
 	private static final long LONG_JUMP = 150l;
 	
 	private World world;

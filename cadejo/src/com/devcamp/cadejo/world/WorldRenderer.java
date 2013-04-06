@@ -24,8 +24,8 @@ import com.devcamp.cadejo.actors.Obstacle;
 
 public class WorldRenderer {
 
-	public static final float CAMERA_W = 10f;
-	public static final float CAMERA_H = 7f;
+	public static final float CAMERA_W = 20f;
+	public static final float CAMERA_H = 14f;
 
 	private static final float RUNNING_FRAME_DURATION = 0.1f;
 	public static final int CANT_IMGS_CORRER = 8;
@@ -80,7 +80,7 @@ public class WorldRenderer {
 		//Score
 		mScoreManager = pScoreManager;
 		mScoreFont = new BitmapFont();
-		mScoreFont.setColor(0.5f,0.4f,0,1);
+		mScoreFont.setColor(1f, 1f, 1f,1);
 
 		//
 		loadTextures();
@@ -124,7 +124,8 @@ public class WorldRenderer {
 
 	private void drawScore()
 	{
-		mScoreFont.draw(spriteBatch, "Score: " + mScoreManager.getScore() , 100, 100);
+		mScoreFont.setScale(2);
+		mScoreFont.draw(spriteBatch, "Score: " + mScoreManager.getScore() , 100, CAMERA_H*ppuY);
 	}
 
 	public void drawCharacter(){

@@ -191,7 +191,7 @@ public class World {
 		int randomObstacle = 1 + ((int)Math.random() * 1);
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
-				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*3){
+				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*4.5){
 					enable = true;
 				}
 				else{

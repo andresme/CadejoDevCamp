@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Floor {
 	
-	static final float SPEED = -2f;
+	static final float SPEED = -3.5f;
 	public static final float SIZE_W = 10f;
 	static final float SIZE_H = 1.5f;
 	static Vector2 tmp;
