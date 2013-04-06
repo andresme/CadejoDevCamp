@@ -28,13 +28,13 @@ public class ScoreActivity extends Activity implements IConstants{
 	
 	private void setButtonEvents()
 	{
-		((Button)findViewById(R.id.btn_jugar_de_nuevo)).setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				setResult(RESULT_JUGAR_DE_NUEVO);
-				finish();
-			}
-		});
+//		((Button)findViewById(R.id.btn_jugar_de_nuevo)).setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				setResult(RESULT_JUGAR_DE_NUEVO);
+//				finish();
+//			}
+//		});
 	}
 }
