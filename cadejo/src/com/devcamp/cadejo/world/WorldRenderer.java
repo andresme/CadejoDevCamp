@@ -4,12 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
@@ -36,10 +37,7 @@ public class WorldRenderer {
 
 	ShapeRenderer debugRenderer = new ShapeRenderer();
 
-	private Texture charTexture;
-	private Texture cadejoTexture;
 	private Array<Texture> backgroundTextures;
-	private Array<Texture> floorTextures;
 	private Array<Texture> obstacleTextures;
 
 	private SpriteBatch spriteBatch;
@@ -82,6 +80,7 @@ public class WorldRenderer {
 		//Score
 		mScoreManager = pScoreManager;
 		mScoreFont = new BitmapFont();
+		mScoreFont.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		mScoreFont.setColor(1f, 1f, 1f,1);
 
 		//
@@ -89,11 +88,11 @@ public class WorldRenderer {
 	}
 
 	public void loadTextures() {
-		
-		
+
+
 		backgroundTextures = new Array<Texture>();
 		backgroundTextures.add(new Texture(Gdx.files.internal("data/Background_1.png")));
-		
+
 		/** Crea la animacion de correr*/
 		TextureAtlas atlas = new TextureAtlas("images/textures/correr.txt");
 		mCharacterIdle = atlas.getRegions().first();
@@ -102,9 +101,9 @@ public class WorldRenderer {
 		int index = 0;
 		for(AtlasRegion region : atlas.getRegions())
 			runFrames[index++] = region;
-		
+
 		mRunAnimation = new Animation(RUNNING_FRAME_DURATION, runFrames);	
-		
+
 		/** Crea la animacion de saltar*/
 		TextureAtlas atlasBrinco = new TextureAtlas("images/textures/saltar.txt");
 		TextureRegion[] jumpFrames = new TextureRegion[CANT_IMGS_SALTAR];
@@ -112,7 +111,7 @@ public class WorldRenderer {
 		index = 0;
 		for(AtlasRegion region : atlasBrinco.getRegions())
 			jumpFrames[index++] = region;
-		
+
 		mJumpAnimation = new Animation(RUNNING_FRAME_DURATION, jumpFrames);
 	}
 
@@ -130,14 +129,14 @@ public class WorldRenderer {
 
 		//Cierra el sprite batch
 		spriteBatch.end();
-		
+
 		if(debug)
 			drawDebug();
 	}
 
 	private void drawScore()
 	{
-		mScoreFont.setScale(2);
+		mScoreFont.setScale(2.5f);
 		mScoreFont.draw(spriteBatch, "Score: " + mScoreManager.getScore() , 100, CAMERA_H*ppuY);
 	}
 
