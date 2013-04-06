@@ -193,13 +193,9 @@ public class World {
 		Gdx.app.log("random", randomObstacle+"");
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
-<<<<<<< HEAD
 				if(obstacles.get(obstacles.size-1).getPosition().x < 
 						WorldRenderer.CAMERA_W - (obstacles.get(obstacles.size-1).size_w+
 								mainCharacter.getBounds().width*1.75)){
-=======
-				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*9){
->>>>>>> incluyendo menu
 					enable = true;
 				}
 				else{
