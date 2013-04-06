@@ -29,20 +29,12 @@ public class Obstacle {
 			size_w = 3.75f;
 			break;
 		case 3:
-			size_h = 0.3f;
-			size_w = 0.7f;
+			size_h = 3f;
+			size_w = 2.64f;
 			break;
 		case 4:
-			size_h = 0.7f;
-			size_w = 0.3f;
-			break;
-		case 5:
-			size_h = 0.2f;
-			size_w = 0.2f;
-			break;
-		case 6:
-			size_h = 0.75f;
-			size_w = 0.3f;
+			size_h = 2.5f;
+			size_w = 3.26f;
 			break;
 		}
 		this.bounds.height = size_h;

@@ -145,12 +145,12 @@ public class World {
 	public void checkObstacleCreation(float dificulty){
 		Obstacle newObstacle = null;
 		boolean enable = false;
-		int randomObstacle = 1 + (int)(Math.random() * 2);
+		int randomObstacle = 1 + (int)(Math.random() * 4);
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
 				if(obstacles.get(obstacles.size-1).getPosition().x < 
 						WorldRenderer.CAMERA_W - (obstacles.get(obstacles.size-1).size_w+
-								mainCharacter.getBounds().width*2)){
+								mainCharacter.getBounds().width*2.5)){
 					enable = true;
 				}
 				else{

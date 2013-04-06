@@ -94,6 +94,8 @@ public class WorldRenderer {
 		obstacleTextures = new Array<Texture>();
 		obstacleTextures.add(new Texture(Gdx.files.internal("images/alcantarilla.png")));
 		obstacleTextures.add(new Texture(Gdx.files.internal("images/basurero.png")));
+		obstacleTextures.add(new Texture(Gdx.files.internal("images/bolsa.png")));
+		obstacleTextures.add(new Texture(Gdx.files.internal("images/tronco.png")));
 		
 
 		/** Crea la animacion de correr*/
