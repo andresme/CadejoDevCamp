@@ -122,7 +122,7 @@ public class World {
 	public void checkBackgroundCreation(){
 		Background newBackground = null;
 		int randomBackground =  1 + (int)(Math.random() * 1); //5);
-		if(backgrounds.get(backgrounds.size-1).getPosition().x <= (WorldRenderer.CAMERA_W - Background.SIZE_W)+(Background.SIZE_W*0.015)){
+		if(backgrounds.get(backgrounds.size-1).getPosition().x <= WorldRenderer.CAMERA_W -Background.SIZE_W+(Background.SIZE_W*0.015)){
 			for(int i = 0; i < cachedBackgrounds.size-1; i++){
 				if(cachedBackgrounds.get(i).getId() == randomBackground){
 					newBackground = cachedBackgrounds.get(i);
@@ -150,7 +150,7 @@ public class World {
 			if(obstacles.size > 0 && obstacles.size < 8){
 				if(obstacles.get(obstacles.size-1).getPosition().x < 
 						WorldRenderer.CAMERA_W - (obstacles.get(obstacles.size-1).size_w+
-								mainCharacter.getBounds().width*2.75)){
+								mainCharacter.getBounds().width*2.75*MainGameScreen.dificultySpeed)){
 					enable = true;
 				}
 				else{
