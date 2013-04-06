@@ -16,6 +16,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 		RUNNING, STOPPED, PAUSED
 	}
 
+	public static float dificultySpeed = 1;
 	private World world;
 	private WorldRenderer renderer;
 	private CharacterController controller;
@@ -35,9 +36,21 @@ public class MainGameScreen implements Screen, InputProcessor{
 				&& !state.equals(GameState.PAUSED)){
 
 			int score = Integer.parseInt(scoreManager.getScore());
-			if(score%500 == 0) dificulty += 0.06;
-			else if(score%750 == 0) dificulty += 0.1;
-			else if(score%1000 == 0) dificulty += 0.3;
+			if(score%500 == 0){
+				dificulty += 0.06;
+				if(dificultySpeed < 4)
+					dificultySpeed += 0.015;
+			}
+			else if(score%750 == 0){
+				dificulty += 0.1;
+				if(dificultySpeed < 4)
+					dificultySpeed += 0.030;
+			}
+			else if(score%1000 == 0){
+				dificulty += 0.3;
+				if(dificultySpeed < 4)
+					dificultySpeed += 0.060;
+			}
 			else{
 				dificulty = (float) Math.random();
 			}
