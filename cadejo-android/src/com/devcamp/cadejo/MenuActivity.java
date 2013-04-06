@@ -19,13 +19,13 @@ public class MenuActivity extends Activity{
 	
 	private void setButtonEvents()
 	{
-		((ImageView)findViewById(R.id.btn_play_menu)).setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, AnimationActivity.class);
-				MenuActivity.this.startActivity(intent);
-			}
-		});
+//		((ImageView)findViewById(R.id.btn_play_menu)).setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(MenuActivity.this, AnimationActivity.class);
+//				MenuActivity.this.startActivity(intent);
+//			}
+//		});
 	}
 }
