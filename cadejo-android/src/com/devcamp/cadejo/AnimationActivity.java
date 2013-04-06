@@ -72,4 +72,11 @@ public class AnimationActivity extends Activity {
 		AnimationActivity.this.finish();
 	}
 	
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+//		ManagerSonidos.getInstance().terminarReprodutorFondo();
+	}
+	
 }

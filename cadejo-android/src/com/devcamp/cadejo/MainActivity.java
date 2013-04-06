@@ -21,7 +21,29 @@ public class MainActivity extends AndroidApplication implements DialogInterface,
 		initialize(new MyGame(this), cfg);
 		
 		//Inicia la musica
+		ManagerSonidos.getInstance().iniciarReproductorFondo(this, R.raw.fondo_menu);
 
+	}
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		ManagerSonidos.getInstance().pausarReproductorFondos();
+	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		ManagerSonidos.getInstance().reanudarReproductorFondos();
+	}
+	
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+//		ManagerSonidos.getInstance().terminarReprodutorFondo();
 	}
 
 	@Override
@@ -42,26 +64,5 @@ public class MainActivity extends AndroidApplication implements DialogInterface,
 			}
 			finish();
 		}
-	}
-	
-	@Override
-	public void onResume()
-	{
-		super.onResume();
-		
-	}
-	
-	@Override
-	public void onPause()
-	{
-		super.onPause();
-		
-	}
-	
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
-		
 	}
 }

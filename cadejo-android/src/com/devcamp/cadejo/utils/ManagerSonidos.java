@@ -57,7 +57,7 @@ public class ManagerSonidos
 	/**
 	 * 
 	 */
-	public void pausarReproductorFondos()
+	public synchronized void pausarReproductorFondos()
 	{
 		if(mSonidoActivado && mReproductorFondos != null)
 		{
@@ -90,7 +90,7 @@ public class ManagerSonidos
 			{
 				mReproductorFondos.stop();
 			}
-			mReproductorFondos.release();
+			//mReproductorFondos.release();
 		}
 	}
 
