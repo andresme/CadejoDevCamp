@@ -4,6 +4,10 @@
     <string name="btn_next_anim">Siguiente</string>
     <string name="puntuacion">Puntuación:</string>
     <string name="skip">Skip</string>
+<<<<<<< HEAD
     <string name="jugarDeNuevo">Jugar de Nuevo</string>
     
+=======
+    <string name="jugarDeNuevo">Jugar de nuevo</string>
+>>>>>>> Agregada la animacion del mae
 </resources>
