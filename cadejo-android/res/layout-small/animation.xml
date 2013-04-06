@@ -13,5 +13,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/next_btn_selector" />
+    
+    <Button
+        android:id="@+id/btn_skip"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="14dp"
+        android:textColor="@android:color/black"
+        android:layout_toLeftOf="@+id/btn_next_menu"
+        android:text="@string/skip" />
 
 </RelativeLayout>
