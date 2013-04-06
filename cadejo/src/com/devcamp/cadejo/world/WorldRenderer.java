@@ -133,14 +133,22 @@ public class WorldRenderer {
 	}
 	
 	public void drawDebug(){
-		Character mainCharacter = world.getMainCharacter();
 		debugRenderer.setProjectionMatrix(cam.combined);
 		debugRenderer.begin(ShapeType.Line);
+		
+		Character mainCharacter = world.getMainCharacter();
 		Rectangle rect = mainCharacter.getBounds();
 		float x1 = mainCharacter.getPosition().x + rect.x;
 		float y1 = mainCharacter.getPosition().y + rect.y;
 		debugRenderer.setColor(new Color(0,1,0,1));
 		debugRenderer.rect(x1, y1, rect.width, rect.height);
+		
+		Cadejo cadejo = world.getCadejo();
+		Rectangle rect3 = cadejo.getBounds();
+		float x3 = cadejo.getPosition().x + rect3.x;
+		float y3 = cadejo.getPosition().y + rect3.y;
+		debugRenderer.setColor(new Color(1,1,1,1));
+		debugRenderer.rect(x3, y3, rect3.width, rect3.height);
 		
 		Array<Background> backgrounds = world.getBackgrounds();
 		for(Background i : backgrounds){

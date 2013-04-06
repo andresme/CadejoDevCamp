@@ -21,7 +21,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 	private CharacterController controller;
 	private ScoreManager scoreManager;
 	public GameState state = GameState.RUNNING;
-	private int width, height;
+	private float dificulty = 0.03f;
 	
 	private MyGame g;
 
@@ -32,9 +32,18 @@ public class MainGameScreen implements Screen, InputProcessor{
 	@Override
 	public void render(float delta) {
 		if(!world.getMainCharacter().getState().equals(State.COLLISION) && state.equals(GameState.RUNNING)){
+			int score = Integer.parseInt(scoreManager.getScore());
+			if(score < 1500 && score > 1000) dificulty += 0.03;
+			else if(score < 1750 && score > 1500) dificulty += 0.04;
+			else if(score < 2000 && score > 1750) dificulty += 0.1;
+			else if(score < 2100 && score > 2000) dificulty += 0.2;
+			else if(score < 2500 && score > 2100) dificulty += 0.3;
+			else{
+				dificulty = (float) Math.random();
+			}
 			Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 			Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-			world.update(delta);
+			world.update(delta, dificulty);
 			controller.update(delta);
 			renderer.render();
 		}
@@ -42,6 +51,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 			scoreManager.stopGame();
 			g.showScore(scoreManager.getScore());
 			state = GameState.RUNNING;
+			controller.touchUp();
 		}
 		
 	}
@@ -49,8 +59,6 @@ public class MainGameScreen implements Screen, InputProcessor{
 	@Override
 	public void resize(int width, int height) {
 		renderer.setSize(width, height);
-		this.width = width;
-		this.height = height;
 		
 	}
 

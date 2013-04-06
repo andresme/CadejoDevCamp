@@ -39,7 +39,7 @@ public class World {
 
 	private void createWorld(){
 		mainCharacter = new Character(new Vector2(2, 1.5f));
-		cadejo = new Cadejo(new Vector2(2, 5));
+		cadejo = new Cadejo(new Vector2(0.5f, 1.5f));
 		for(int i = 0; i < 3; i++){
 			backgrounds.add(new Background(new Vector2((float)i*Background.SIZE_W, 0), i));
 		}
@@ -49,7 +49,7 @@ public class World {
 
 	}
 
-	public void update(float delta){
+	public void update(float delta, float dificulty){
 		checkCollisions();
 		updateBackground(delta);
 		updateFloor(delta);
@@ -59,9 +59,9 @@ public class World {
 		deleteGone();
 		checkBackgroundCreation();
 		checkFloorCreation();
-		checkObstacleCreation();
+		checkObstacleCreation(delta);
 	}
-	
+
 	public void checkCollisions(){
 		for(Obstacle i: obstacles){
 			if(mainCharacter.getPosition().x+mainCharacter.getBounds().width > i.getPosition().x &&
@@ -186,25 +186,39 @@ public class World {
 
 	}
 
-	public void checkObstacleCreation(){
+	public void checkObstacleCreation(float dificulty){
 		Obstacle newObstacle = null;
+		boolean enable = false;
 		int randomObstacle = 0; // should be random
-		if(Math.random() < 0.01){
-			for(int i = 0; i < cachedObstacles.size-1; i++){
-				if(cachedObstacles.get(i).getId() == randomObstacle){
-					newObstacle = cachedObstacles.get(i);
-					newObstacle.getPosition().x = WorldRenderer.CAMERA_W;
-					break;
+		if(Math.random() < 1*dificulty){
+			if(obstacles.size > 0 && obstacles.size < 6){
+				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*3.5){
+					enable = true;
 				}
-			}
-			if(newObstacle != null){
-				obstacles.add(newObstacle);
-				cachedObstacles.removeValue(newObstacle, false);
+				else{
+					enable = false;
+				}
+
 			}
 			else{
-				obstacles.add(new Obstacle(new Vector2(WorldRenderer.CAMERA_W, 1.5f), randomObstacle));
+				enable = true;
 			}
-
+			if(enable){
+				for(int i = 0; i < cachedObstacles.size-1; i++){
+					if(cachedObstacles.get(i).getId() == randomObstacle){
+						newObstacle = cachedObstacles.get(i);
+						newObstacle.getPosition().x = WorldRenderer.CAMERA_W;
+						break;
+					}
+				}
+				if(newObstacle != null){
+					obstacles.add(newObstacle);
+					cachedObstacles.removeValue(newObstacle, false);
+				}
+				else{
+					obstacles.add(new Obstacle(new Vector2(WorldRenderer.CAMERA_W, 1.5f), randomObstacle));
+				}
+			}
 		}
 	}
 

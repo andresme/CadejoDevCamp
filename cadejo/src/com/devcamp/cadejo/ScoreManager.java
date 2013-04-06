@@ -1,6 +1,5 @@
 package com.devcamp.cadejo;
 
-import com.badlogic.gdx.Gdx;
 
 public class ScoreManager {
 	
