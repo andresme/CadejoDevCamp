@@ -1,9 +1,6 @@
 package com.devcamp.cadejo.world;
 
-<<<<<<< HEAD
 import com.badlogic.gdx.Gdx;
-=======
->>>>>>> asdasd
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
@@ -94,11 +91,7 @@ public class World {
 			i.update(delta);
 		}
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> asdasd
 	public void checkGone(){
 		for(Background i : backgrounds){
 			if(i.getPosition().x < -Background.SIZE_W){
