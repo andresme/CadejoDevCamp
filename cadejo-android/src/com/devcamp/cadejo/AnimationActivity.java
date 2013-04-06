@@ -13,9 +13,9 @@ import android.widget.RelativeLayout;
 
 public class AnimationActivity extends Activity {
 
-	private final int CANT_IMAGENES_ANIM = 1;
+	private final int CANT_IMAGENES_ANIM = 3;
 	private int mPosActualAnim = 0;
-	private int[] mImagenesAnim = {R.drawable.anim1};
+	private int[] mImagenesAnim = {R.drawable.anim1, R.drawable.anim2, R.drawable.anim3};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class AnimationActivity extends Activity {
 			}
 		});
 
-		((Button)findViewById(R.id.btn_skip)).setOnClickListener(new OnClickListener() {
+		((ImageView)findViewById(R.id.btn_skip)).setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) 

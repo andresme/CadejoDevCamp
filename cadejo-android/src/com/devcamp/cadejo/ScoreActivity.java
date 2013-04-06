@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.devcamp.cadejo.utils.IConstants;
+import com.parse.Parse;
 
 public class ScoreActivity extends Activity implements IConstants{
 
@@ -18,6 +19,8 @@ public class ScoreActivity extends Activity implements IConstants{
 		setContentView(R.layout.score);
 		setButtonEvents();
 		showScore();
+		
+		Parse.initialize(this, "Q0UT8TWKK3rq7OmkuEgOH5DfBLBKuo7T9SlzI8eq", "gLvGCCY2joP6ktILOmM9bHfJhaYpLxBcrBLGwdBS");
 	}
 
 	public void showScore()
