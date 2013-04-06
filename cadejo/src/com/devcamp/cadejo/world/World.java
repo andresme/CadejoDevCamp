@@ -1,5 +1,6 @@
 package com.devcamp.cadejo.world;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
@@ -7,6 +8,7 @@ import com.devcamp.cadejo.actors.Cadejo;
 import com.devcamp.cadejo.actors.Character;
 import com.devcamp.cadejo.actors.Floor;
 import com.devcamp.cadejo.actors.Obstacle;
+import com.devcamp.cadejo.actors.Character.State;
 
 public class World {
 
@@ -44,6 +46,7 @@ public class World {
 	}
 
 	public void update(float delta){
+		checkCollisions();
 		updateBackground(delta);
 		updateFloor(delta);
 		updateObstacles(delta);
@@ -53,6 +56,17 @@ public class World {
 		checkBackgroundCreation();
 		checkFloorCreation();
 		checkObstacleCreation();
+	}
+	
+	public void checkCollisions(){
+		for(Obstacle i: obstacles){
+			if(mainCharacter.getPosition().x+mainCharacter.getBounds().width > i.getPosition().x &&
+					mainCharacter.getPosition().x < i.getPosition().x+i.getBounds().width &&
+					mainCharacter.getPosition().y < i.getPosition().y+i.getBounds().height){
+				Gdx.app.log("collision", "detected");
+				mainCharacter.setState(State.COLLISION);
+			}
+		}
 	}
 
 	public void updateBackground(float delta){

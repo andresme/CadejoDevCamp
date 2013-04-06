@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.devcamp.cadejo.MyGame;
+import com.devcamp.cadejo.actors.Character.State;
 import com.devcamp.cadejo.actors.CharacterController;
 import com.devcamp.cadejo.world.World;
 import com.devcamp.cadejo.world.WorldRenderer;
@@ -15,15 +17,28 @@ public class MainGameScreen implements Screen, InputProcessor{
 	private CharacterController controller;
 	
 	private int width, height;
+	
+	private MyGame g;
 
 	
+	/*public MainGameScreen(MyGame g) {
+		this.g = g;
+	}*/
+
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		world.update(delta);
-		controller.update(delta);
-		renderer.render();
+		if(!world.getMainCharacter().getState().equals(State.COLLISION)){
+			Gdx.gl.glClearColor(0f, 0f, 0f, 1);
+			Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+			world.update(delta);
+			controller.update(delta);
+			renderer.render();
+		}
+		else{
+			//g.showScore();
+			
+		}
+		
 	}
 
 	@Override
