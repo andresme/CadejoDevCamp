@@ -150,7 +150,7 @@ public class World {
 		Obstacle newObstacle = null;
 		boolean enable = false;
 		int randomObstacle = 1 + (int)(Math.random() * 4);
-		if(delta < 2.5f){
+		if(delta < 4f){
 			return;
 		}
 		if(Math.random() < difficulty){
