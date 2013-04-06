@@ -80,7 +80,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 		dificultySpeed = 1;
 		world = new World(this);
 		scoreManager = new ScoreManager();
-		renderer = new WorldRenderer(world, scoreManager);
+		renderer = new WorldRenderer(world, true, scoreManager);
 		controller = new CharacterController(world);
 		scoreManager.startGame();
 		Gdx.input.setInputProcessor(this);
