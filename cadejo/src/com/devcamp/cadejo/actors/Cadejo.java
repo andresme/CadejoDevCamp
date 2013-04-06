@@ -7,13 +7,20 @@ public class Cadejo {
 	
 	static final float SPEED = 2f;
 	static final float JUMP_VEL = 1f;
-	static final float SIZE_W = 0.5f;
-	static final float SIZE_H = 0.5f;
+	public static final float SIZE_W = 4f;
+	public static final float SIZE_H = 3f;
 	
 	Vector2 position = new Vector2();
 	Vector2 acceleration = new Vector2();
 	Vector2 velocity = new Vector2();
 	Rectangle bounds = new Rectangle();
+	
+	float stateTime = 0;
+	
+	public float getStateTime()
+	{
+		return stateTime;
+	}
 	
 	public Cadejo(Vector2 position){
 		this.position = position;
@@ -22,6 +29,7 @@ public class Cadejo {
 	}
 	
 	public void update(float delta){
+		stateTime += delta;
 		Vector2 velTemp = velocity.cpy();
 		position.add(velTemp.scl(delta));
 	}

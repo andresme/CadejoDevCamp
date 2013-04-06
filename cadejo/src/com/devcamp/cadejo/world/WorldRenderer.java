@@ -30,6 +30,7 @@ public class WorldRenderer {
 	private static final float RUNNING_FRAME_DURATION = 0.1f;
 	public static final int CANT_IMGS_CORRER = 8;
 	public static final int CANT_IMGS_SALTAR = 18;
+	public static final int CANT_IMGS_PERRO = 5;
 
 	private World world;
 	private OrthographicCamera cam;
@@ -55,8 +56,11 @@ public class WorldRenderer {
 	//Para la animacion
 	private Animation mRunAnimation;
 	private Animation mJumpAnimation;
+	private Animation mDogRunAnimation;
 	private TextureRegion[] mRunFrames = new TextureRegion[8];
 	private TextureRegion mCharacterIdle;
+	private TextureRegion mDogIdle;
+	private TextureRegion mDogFrame;
 	private TextureRegion mCharacterJump;
 	private TextureRegion mCharacterFrame;
 
@@ -118,6 +122,18 @@ public class WorldRenderer {
 			jumpFrames[index++] = region;
 
 		mJumpAnimation = new Animation(RUNNING_FRAME_DURATION, jumpFrames);
+		
+		/** Crea la animacion del perro*/
+		TextureAtlas atlasDog = new TextureAtlas("images/textures/perro.txt");
+		mDogIdle = atlasDog.getRegions().first();
+
+		TextureRegion[] dogFrames = new TextureRegion[CANT_IMGS_PERRO];
+		index = 0;
+		for(AtlasRegion region : atlasDog.getRegions())
+			dogFrames[index++] = region;
+
+		mDogRunAnimation = new Animation(RUNNING_FRAME_DURATION, dogFrames);	
+		
 	}
 
 	public void render(){
@@ -130,7 +146,9 @@ public class WorldRenderer {
 		//Dibuja todo lo necesario
 		drawBackground();
 		drawCharacter();
+		drawCadejo();
 		drawObstacles();
+		
 		drawScore();
 
 		//Cierra el sprite batch
@@ -159,7 +177,9 @@ public class WorldRenderer {
 	}
 
 	public void drawCadejo(){
-		Cadejo cadejo = world.getCadejo();
+		Cadejo mainCharacter = world.getCadejo();
+		mDogFrame = mDogRunAnimation.getKeyFrame(mainCharacter.getStateTime(), true);
+		spriteBatch.draw(mDogFrame, mainCharacter.getPosition().x * ppuX, mainCharacter.getPosition().y * ppuY, Cadejo.SIZE_W * ppuX, Cadejo.SIZE_H * ppuY);
 	}
 
 	public void drawObstacles(){
