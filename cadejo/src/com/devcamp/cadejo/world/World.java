@@ -150,7 +150,7 @@ public class World {
 			if(obstacles.size > 0 && obstacles.size < 8){
 				if(obstacles.get(obstacles.size-1).getPosition().x < 
 						WorldRenderer.CAMERA_W - (obstacles.get(obstacles.size-1).size_w+
-								mainCharacter.getBounds().width*2.5)){
+								mainCharacter.getBounds().width*2)){
 					enable = true;
 				}
 				else{

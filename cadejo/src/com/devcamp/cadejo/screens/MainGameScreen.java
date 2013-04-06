@@ -35,11 +35,9 @@ public class MainGameScreen implements Screen, InputProcessor{
 				&& !state.equals(GameState.PAUSED)){
 
 			int score = Integer.parseInt(scoreManager.getScore());
-			if(score < 1500 && score > 1000) dificulty += 0.03;
-			else if(score < 1750 && score > 1500) dificulty += 0.04;
-			else if(score < 2000 && score > 1750) dificulty += 0.1;
-			else if(score < 2100 && score > 2000) dificulty += 0.2;
-			else if(score < 2500 && score > 2100) dificulty += 0.3;
+			if(score%500 == 0) dificulty += 0.06;
+			else if(score%750 == 0) dificulty += 0.1;
+			else if(score%1000 == 0) dificulty += 0.3;
 			else{
 				dificulty = (float) Math.random();
 			}
