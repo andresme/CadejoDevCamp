@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Background {
 	
-	public static final float SPEED = -7.5f;
+	public static final float SPEED = -7.75f;
 	public static final float SIZE_W = 20f;
 	public static final float SIZE_H = 14f;
 	public static Vector2 tmp = new Vector2();

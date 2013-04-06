@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Obstacle {
 	
-	static final float SPEED = -7.5f;
+	static final float SPEED = -7.75f;
 	public float size_w;
 	public float size_h;
 	static Vector2 tmp;

@@ -1,6 +1,5 @@
 package com.devcamp.cadejo.world;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
@@ -34,8 +33,8 @@ public class World {
 	}
 
 	private void createWorld(){
-		mainCharacter = new Character(new Vector2(4.5f, 1.5f));
-		cadejo = new Cadejo(new Vector2(0.5f, 1.5f));
+		mainCharacter = new Character(new Vector2(7.5f, 1.5f));
+		cadejo = new Cadejo(new Vector2(0.5f, 3.1f));
 		backgrounds.add(new Background(new Vector2(0, 0), 1));
 		for(int i = 1; i < 4; i++){
 			backgrounds.add(new Background(new Vector2((float)i*Background.SIZE_W, 0), 1));
@@ -147,12 +146,11 @@ public class World {
 		Obstacle newObstacle = null;
 		boolean enable = false;
 		int randomObstacle = 1 + (int)(Math.random() * 2);
-		Gdx.app.log("random", randomObstacle+"");
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
 				if(obstacles.get(obstacles.size-1).getPosition().x < 
 						WorldRenderer.CAMERA_W - (obstacles.get(obstacles.size-1).size_w+
-								mainCharacter.getBounds().width*2.5)){
+								mainCharacter.getBounds().width*2)){
 					enable = true;
 				}
 				else{
@@ -176,7 +174,7 @@ public class World {
 					cachedObstacles.removeValue(newObstacle, false);
 				}
 				else{
-					obstacles.add(new Obstacle(new Vector2(WorldRenderer.CAMERA_W, 1.5f), randomObstacle));
+					obstacles.add(new Obstacle(new Vector2(WorldRenderer.CAMERA_W, 0.75f), randomObstacle));
 				}
 			}
 		}

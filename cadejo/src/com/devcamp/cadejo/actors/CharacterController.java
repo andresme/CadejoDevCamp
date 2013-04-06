@@ -13,7 +13,7 @@ public class CharacterController {
 		JUMP
 	}
 	
-	private static final float GRAVITY = -6f;
+	private static final float GRAVITY = -7.5f;
 	private static final float MAX_JUMP_SPEED = 4.25f;
 
 	private static final float DAMP = 10f;
