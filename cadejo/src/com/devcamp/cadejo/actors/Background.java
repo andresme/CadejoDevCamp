@@ -2,6 +2,7 @@ package com.devcamp.cadejo.actors;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.devcamp.cadejo.screens.MainGameScreen;
 
 public class Background {
 	
@@ -25,7 +26,7 @@ public class Background {
 	}
 	
 	public void update(float delta){
-		tmp = velocity.cpy();
+		tmp = velocity.cpy().scl(MainGameScreen.dificultySpeed);;
 		position.add(tmp.scl(delta));
 	}
 
