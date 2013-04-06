@@ -1,5 +1,6 @@
 package com.devcamp.cadejo.world;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
@@ -12,6 +13,9 @@ import com.devcamp.cadejo.screens.MainGameScreen.GameState;
 
 public class World {
 
+
+	private static float accum = 0;
+	
 	private Character mainCharacter;
 	private Cadejo cadejo;
 	private MainGameScreen screen;
@@ -44,6 +48,7 @@ public class World {
 	}
 
 	public void update(float delta, float dificulty){
+		accum += delta;
 		checkCollisions();
 		updateBackground(delta);
 		updateObstacles(delta);
@@ -51,7 +56,7 @@ public class World {
 		makeCache();
 		deleteGone();
 		checkBackgroundCreation();
-		checkObstacleCreation(delta);
+		checkObstacleCreation(dificulty, accum);
 	}
 
 	public void checkCollisions(){
@@ -142,15 +147,18 @@ public class World {
 
 	
 
-	public void checkObstacleCreation(float dificulty){
+	public void checkObstacleCreation(float dificulty, float delta){
 		Obstacle newObstacle = null;
 		boolean enable = false;
 		int randomObstacle = 1 + (int)(Math.random() * 4);
+		if(delta < 2.5f){
+			return;
+		}
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
 				if(obstacles.get(obstacles.size-1).getPosition().x < 
 						WorldRenderer.CAMERA_W - (obstacles.get(obstacles.size-1).size_w+
-								mainCharacter.getBounds().width*2.75*MainGameScreen.dificultySpeed)){
+								mainCharacter.getBounds().width*4.15*MainGameScreen.dificultySpeed/1.5)){
 					enable = true;
 				}
 				else{

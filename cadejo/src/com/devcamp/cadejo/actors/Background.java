@@ -26,7 +26,8 @@ public class Background {
 	}
 	
 	public void update(float delta){
-		tmp = velocity.cpy().scl(MainGameScreen.dificultySpeed);;
+		tmp = velocity.cpy();
+		tmp.scl(MainGameScreen.dificultySpeed);
 		position.add(tmp.scl(delta));
 	}
 

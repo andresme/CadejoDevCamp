@@ -34,26 +34,26 @@ public class MainGameScreen implements Screen, InputProcessor{
 	public void render(float delta) {
 		if(!world.getMainCharacter().getState().equals(State.COLLISION) && state.equals(GameState.RUNNING)
 				&& !state.equals(GameState.PAUSED)){
-
 			int score = Integer.parseInt(scoreManager.getScore());
-			if(score%500 == 0){
-				dificulty += 0.06;
-				if(dificultySpeed < 8)
-					dificultySpeed += 0.0010;
+			if(score%10000 == 0 && score != 0){
+				dificultySpeed *= 2;
 			}
-			else if(score%750 == 0){
-				dificulty += 0.1;
-				if(dificultySpeed < 8)
-					dificultySpeed += 0.0020;
+			if(score%550 == 0 && score != 0){
+				dificulty += 0.2*(float) Math.random();
+				dificultySpeed += 0.0040;
 			}
-			else if(score%1000 == 0){
-				dificulty += 0.3;
-				if(dificultySpeed < 8)
-					dificultySpeed += 0.0030;
+			if(score%750 == 0 && score != 0){
+				dificulty += 0.4*(float) Math.random();
+				dificultySpeed += 0.0045;
 			}
-			else{
+			if(score%1150 == 0 && score != 0){
+				dificulty += (float) Math.random();
+				dificultySpeed += 0.0055;
+			}
+			if(score%100 == 0 && score != 0){
 				dificulty = (float) Math.random();
 			}
+			if(dificultySpeed > 3) dificultySpeed = 3f;
 			Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 			Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 			world.update(delta, dificulty);
@@ -61,11 +61,10 @@ public class MainGameScreen implements Screen, InputProcessor{
 			renderer.render();
 		}
 		else if(state.equals(GameState.STOPPED)){
-			dificultySpeed = 1;
 			controller.touchUp();
 			scoreManager.stopGame();
 			g.showScore(scoreManager.getScore());
-			state = GameState.RUNNING;
+			dificultySpeed = 1;
 		}
 
 	}
@@ -78,6 +77,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 
 	@Override
 	public void show() {
+		dificultySpeed = 1;
 		world = new World(this);
 		scoreManager = new ScoreManager();
 		renderer = new WorldRenderer(world, scoreManager);
@@ -100,13 +100,14 @@ public class MainGameScreen implements Screen, InputProcessor{
 
 	@Override
 	public void resume() {
+		dificultySpeed = 1;
 		state = GameState.RUNNING;
 
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		dificultySpeed = 1;
 
 	}
 
