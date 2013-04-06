@@ -59,9 +59,10 @@ public class ManagerSonidos
 	 */
 	public void pausarReproductorFondos()
 	{
-		if(mSonidoActivado)
+		if(mSonidoActivado && mReproductorFondos != null)
 		{
-			mReproductorFondos.pause();
+			if(mReproductorFondos.isPlaying())
+				mReproductorFondos.pause();
 		}
 	}
 	

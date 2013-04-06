@@ -27,6 +27,13 @@ public class MenuActivity extends Activity{
 	}
 	
 	@Override
+	public void onRestart()
+	{
+		super.onRestart();
+		ManagerSonidos.getInstance().iniciarReproductorFondo(this, R.raw.fondo_menu);
+	}
+	
+	@Override
 	public void onPause()
 	{
 		super.onPause();
