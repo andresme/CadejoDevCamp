@@ -12,12 +12,15 @@ import com.devcamp.cadejo.world.World;
 import com.devcamp.cadejo.world.WorldRenderer;
 
 public class MainGameScreen implements Screen, InputProcessor{
+	public enum GameState{
+		RUNNING, STOPPED
+	}
 
 	private World world;
 	private WorldRenderer renderer;
 	private CharacterController controller;
 	private ScoreManager scoreManager;
-	
+	public GameState state = GameState.RUNNING;
 	private int width, height;
 	
 	private MyGame g;
@@ -28,16 +31,17 @@ public class MainGameScreen implements Screen, InputProcessor{
 
 	@Override
 	public void render(float delta) {
-		if(!world.getMainCharacter().getState().equals(State.COLLISION)){
+		if(!world.getMainCharacter().getState().equals(State.COLLISION) && state.equals(GameState.RUNNING)){
 			Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 			Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 			world.update(delta);
 			controller.update(delta);
 			renderer.render();
 		}
-		else{
+		else if(state.equals(GameState.STOPPED)){
 			scoreManager.stopGame();
 			g.showScore(scoreManager.getScore());
+			state = GameState.RUNNING;
 		}
 		
 	}
@@ -52,7 +56,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 
 	@Override
 	public void show() {
-		world = new World();
+		world = new World(this);
 		scoreManager = new ScoreManager();
 		renderer = new WorldRenderer(world, true, scoreManager);
 		controller = new CharacterController(world);

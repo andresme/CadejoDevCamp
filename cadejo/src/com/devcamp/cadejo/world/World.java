@@ -9,11 +9,14 @@ import com.devcamp.cadejo.actors.Character;
 import com.devcamp.cadejo.actors.Character.State;
 import com.devcamp.cadejo.actors.Floor;
 import com.devcamp.cadejo.actors.Obstacle;
+import com.devcamp.cadejo.screens.MainGameScreen;
+import com.devcamp.cadejo.screens.MainGameScreen.GameState;
 
 public class World {
 
 	private Character mainCharacter;
 	private Cadejo cadejo;
+	private MainGameScreen screen;
 
 	private Array<Background> backgrounds = new Array<Background>();
 	private Array<Obstacle> obstacles = new Array<Obstacle>();
@@ -29,7 +32,8 @@ public class World {
 	private Array<Obstacle> goneObstacles = new Array<Obstacle>();
 	private Array<Floor> goneFloor = new Array<Floor>();
 
-	public World(){
+	public World(MainGameScreen screen){
+		this.screen = screen;
 		createWorld();
 	}
 
@@ -65,6 +69,7 @@ public class World {
 					mainCharacter.getPosition().y < i.getPosition().y+i.getBounds().height){
 				Gdx.app.log("collision", "detected");
 				mainCharacter.setState(State.COLLISION);
+				screen.state = GameState.STOPPED;
 			}
 		}
 	}
