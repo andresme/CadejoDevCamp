@@ -108,6 +108,7 @@ public class WorldRenderer {
 		spriteBatch.begin();
 
 		//Dibuja todo lo necesario
+		drawBackground();
 		drawCharacter();
 		drawScore();
 
@@ -152,10 +153,6 @@ public class WorldRenderer {
 		for(Background i : backgrounds){
 			spriteBatch.draw(backgroundTextures.get(i.getId()-1), i.getPosition().x * ppuX, i.getPosition().y * ppuY,
 					Background.SIZE_W * ppuX, Background.SIZE_H * ppuY);
-			switch(i.getId()){
-			case 1:
-
-			}
 		}
 	}
 
