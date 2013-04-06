@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -34,9 +35,7 @@ public class AnimationActivity extends Activity {
 			{
 				if(mPosActualAnim == CANT_IMAGENES_ANIM-1)
 				{
-					Intent intent = new Intent(AnimationActivity.this, MainActivity.class);
-					AnimationActivity.this.startActivity(intent);
-					AnimationActivity.this.finish();
+					startGame();
 				}else
 				{
 					mPosActualAnim+=1;
@@ -44,5 +43,22 @@ public class AnimationActivity extends Activity {
 				}
 			}
 		});
+
+		((Button)findViewById(R.id.btn_skip)).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) 
+			{
+				startGame();
+			}
+		});
 	}
+
+	private void startGame()
+	{
+		Intent intent = new Intent(AnimationActivity.this, MainActivity.class);
+		AnimationActivity.this.startActivity(intent);
+		AnimationActivity.this.finish();
+	}
+	
 }
