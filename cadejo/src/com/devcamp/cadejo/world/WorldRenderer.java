@@ -140,9 +140,6 @@ public class WorldRenderer {
 	}
 
 	public void render(){
-		if(debug)
-			drawDebug();
-
 		//Abre el sprite batch
 		spriteBatch.begin();
 
@@ -164,7 +161,7 @@ public class WorldRenderer {
 	private void drawScore()
 	{
 		mScoreFont.setScale(2.5f);
-		mScoreFont.draw(spriteBatch, "Score: " + mScoreManager.getScore() , 100, CAMERA_H*ppuY);
+		mScoreFont.draw(spriteBatch, "Score: " + mScoreManager.getScore() , 1*ppuX, (CAMERA_H-1)*ppuY);
 	}
 
 	public void drawCharacter(){
