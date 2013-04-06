@@ -14,7 +14,7 @@ public class MainActivity extends AndroidApplication implements DialogInterface,
 		super.onCreate(savedInstanceState);
 
 		AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
-		cfg.useGL20 = false;
+		cfg.useGL20 = true;
 
 		initialize(new MyGame(this), cfg);
 	}

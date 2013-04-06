@@ -32,6 +32,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 	@Override
 	public void render(float delta) {
 		if(!world.getMainCharacter().getState().equals(State.COLLISION) && state.equals(GameState.RUNNING)){
+			
 			int score = Integer.parseInt(scoreManager.getScore());
 			if(score < 1500 && score > 1000) dificulty += 0.03;
 			else if(score < 1750 && score > 1500) dificulty += 0.04;
@@ -48,10 +49,10 @@ public class MainGameScreen implements Screen, InputProcessor{
 			renderer.render();
 		}
 		else if(state.equals(GameState.STOPPED)){
+			controller.touchUp();
 			scoreManager.stopGame();
 			g.showScore(scoreManager.getScore());
 			state = GameState.RUNNING;
-			controller.touchUp();
 		}
 
 	}

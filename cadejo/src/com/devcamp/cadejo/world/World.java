@@ -39,10 +39,11 @@ public class World {
 	private void createWorld(){
 		mainCharacter = new Character(new Vector2(2, 1.5f));
 		cadejo = new Cadejo(new Vector2(0.5f, 1.5f));
-		for(int i = 0; i < 3; i++){
-			backgrounds.add(new Background(new Vector2((float)i*Background.SIZE_W, 0), i));
+		backgrounds.add(new Background(new Vector2(0, 0), 1));
+		for(int i = 1; i < 4; i++){
+			backgrounds.add(new Background(new Vector2((float)i*Background.SIZE_W, 0), 1));
 		}
-		for(int i = 0; i < 3; i++){
+		for(int i = 1; i < 4; i++){
 			floor.add(new Floor(new Vector2((float)i*Background.SIZE_W, 0)));
 		}
 
@@ -149,7 +150,7 @@ public class World {
 
 	public void checkBackgroundCreation(){
 		Background newBackground = null;
-		int randomBackground = 0; // should be random
+		int randomBackground =  1 + ((int)Math.random() * 1); // should be random
 		if(backgrounds.get(backgrounds.size-1).getPosition().x <= WorldRenderer.CAMERA_W - Background.SIZE_W){
 			for(int i = 0; i < cachedBackgrounds.size-1; i++){
 				if(cachedBackgrounds.get(i).getId() == randomBackground){
@@ -187,10 +188,10 @@ public class World {
 	public void checkObstacleCreation(float dificulty){
 		Obstacle newObstacle = null;
 		boolean enable = false;
-		int randomObstacle = 0; // should be random
+		int randomObstacle = 1 + ((int)Math.random() * 1);
 		if(Math.random() < 1*dificulty){
 			if(obstacles.size > 0 && obstacles.size < 8){
-				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*2.5){
+				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*3){
 					enable = true;
 				}
 				else{
