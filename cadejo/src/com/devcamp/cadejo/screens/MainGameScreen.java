@@ -38,17 +38,17 @@ public class MainGameScreen implements Screen, InputProcessor{
 			int score = Integer.parseInt(scoreManager.getScore());
 			if(score%500 == 0){
 				dificulty += 0.06;
-				if(dificultySpeed < 4)
+				if(dificultySpeed < 8)
 					dificultySpeed += 0.0010;
 			}
 			else if(score%750 == 0){
 				dificulty += 0.1;
-				if(dificultySpeed < 4)
+				if(dificultySpeed < 8)
 					dificultySpeed += 0.0020;
 			}
 			else if(score%1000 == 0){
 				dificulty += 0.3;
-				if(dificultySpeed < 4)
+				if(dificultySpeed < 8)
 					dificultySpeed += 0.0030;
 			}
 			else{
