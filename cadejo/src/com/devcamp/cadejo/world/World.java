@@ -13,7 +13,7 @@ import com.devcamp.cadejo.screens.MainGameScreen.GameState;
 public class World {
 
 
-	private static float accum = 0;
+	private float accum = 0;
 	
 	private Character mainCharacter;
 	private Cadejo cadejo;
@@ -33,6 +33,7 @@ public class World {
 	public World(MainGameScreen screen){
 		this.screen = screen;
 		createWorld();
+		
 	}
 
 	private void createWorld(){
@@ -125,7 +126,7 @@ public class World {
 
 	public void checkBackgroundCreation(){
 		Background newBackground = null;
-		int randomBackground =  1 + (int)(Math.random() * 1);
+		int randomBackground =  1 + (int)(Math.random() * 4);
 		if(backgrounds.get(backgrounds.size-1).getPosition().x <= WorldRenderer.CAMERA_W -Background.SIZE_W+(Background.SIZE_W*0.015)){
 			for(int i = 0; i < cachedBackgrounds.size-1; i++){
 				if(cachedBackgrounds.get(i).getId() == randomBackground){

@@ -94,6 +94,9 @@ public class WorldRenderer {
 
 		backgroundTextures = new Array<Texture>();
 		backgroundTextures.add(new Texture(Gdx.files.internal("images/Background_1.png")));
+		backgroundTextures.add(new Texture(Gdx.files.internal("images/Background_2.png")));
+		backgroundTextures.add(new Texture(Gdx.files.internal("images/Background_3.png")));
+		backgroundTextures.add(new Texture(Gdx.files.internal("images/Background_4.png")));
 		
 		obstacleTextures = new Array<Texture>();
 		obstacleTextures.add(new Texture(Gdx.files.internal("images/alcantarilla.png")));
