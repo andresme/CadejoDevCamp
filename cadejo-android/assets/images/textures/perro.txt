@@ -1,0 +1,39 @@
+perro.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cadejo
+  rotate: false
+  xy: 2, 2
+  size: 522, 282
+  orig: 550, 400
+  offset: 0, 83
+  index: 4
+cadejo
+  rotate: false
+  xy: 526, 2
+  size: 484, 332
+  orig: 550, 400
+  offset: 37, 7
+  index: 3
+cadejo
+  rotate: false
+  xy: 2, 286
+  size: 520, 334
+  orig: 550, 400
+  offset: 28, 3
+  index: 5
+cadejo
+  rotate: false
+  xy: 520, 622
+  size: 500, 336
+  orig: 550, 400
+  offset: 21, 1
+  index: 1
+cadejo
+  rotate: false
+  xy: 2, 622
+  size: 516, 342
+  orig: 550, 400
+  offset: 5, 3
+  index: 2

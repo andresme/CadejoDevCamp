@@ -22,6 +22,7 @@ public class CharacterController {
 	
 	private World world;
 	private Character mainCharacter;
+	private Cadejo mCadejo;
 	private boolean jumpingPressed;
 	private long jumpPressedTime;
 	
@@ -34,6 +35,7 @@ public class CharacterController {
 	public CharacterController(World world){
 		this.world = world;
 		this.mainCharacter = this.world.getMainCharacter();
+		this.mCadejo = this.world.getCadejo();
 	}
 	
 	public void touchDown(){
@@ -57,8 +59,9 @@ public class CharacterController {
 		if(mainCharacter.velocity.x < -MAX_VEL) mainCharacter.velocity.x = -MAX_VEL;
 		
 		mainCharacter.update(delta);
-		
 		mainCharacter.update(delta);
+		mCadejo.update(delta);
+		
 		if(mainCharacter.getPosition().y < 1.5){
 			mainCharacter.getPosition().y = 1.5f;
 			mainCharacter.setPosition(mainCharacter.getPosition());
