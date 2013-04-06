@@ -4,4 +4,6 @@
     <string name="btn_next_anim">Siguiente</string>
     <string name="puntuacion">Puntuación:</string>
     <string name="skip">Skip</string>
+    <string name="jugarDeNuevo">Jugar de Nuevo</string>
+    
 </resources>

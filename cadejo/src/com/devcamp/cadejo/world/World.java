@@ -1,6 +1,5 @@
 package com.devcamp.cadejo.world;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.devcamp.cadejo.actors.Background;
@@ -67,7 +66,6 @@ public class World {
 			if(mainCharacter.getPosition().x+mainCharacter.getBounds().width > i.getPosition().x &&
 					mainCharacter.getPosition().x < i.getPosition().x+i.getBounds().width &&
 					mainCharacter.getPosition().y < i.getPosition().y+i.getBounds().height){
-				Gdx.app.log("collision", "detected");
 				mainCharacter.setState(State.COLLISION);
 				screen.state = GameState.STOPPED;
 			}
@@ -191,8 +189,8 @@ public class World {
 		boolean enable = false;
 		int randomObstacle = 0; // should be random
 		if(Math.random() < 1*dificulty){
-			if(obstacles.size > 0 && obstacles.size < 6){
-				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*3.5){
+			if(obstacles.size > 0 && obstacles.size < 8){
+				if(obstacles.get(obstacles.size-1).getPosition().x < WorldRenderer.CAMERA_W - Obstacle.SIZE_W*2.5){
 					enable = true;
 				}
 				else{

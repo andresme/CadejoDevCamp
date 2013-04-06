@@ -22,7 +22,7 @@ public class MainGameScreen implements Screen, InputProcessor{
 	private ScoreManager scoreManager;
 	public GameState state = GameState.RUNNING;
 	private float dificulty = 0.03f;
-	
+
 	private MyGame g;
 
 	public MainGameScreen(MyGame g){
@@ -53,13 +53,13 @@ public class MainGameScreen implements Screen, InputProcessor{
 			state = GameState.RUNNING;
 			controller.touchUp();
 		}
-		
+
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		renderer.setSize(width, height);
-		
+
 	}
 
 	@Override
@@ -75,25 +75,25 @@ public class MainGameScreen implements Screen, InputProcessor{
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
